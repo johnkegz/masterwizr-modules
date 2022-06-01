@@ -26,10 +26,10 @@ function Swiper() {
     }, [])
 
     const setLeft = (index: number) => {
-        setC1('slide-out')
-        setC2('slide-in')
-        setI1('slide2')
-        setI2('slide1')
+        // setC1('slide-out')
+        // setC2('slide-in')
+        // setI1('slide2')
+        // setI2('slide1')
         const newIndex = index - 1
         if (newIndex < 0) {
             setCurrentImageIndex(images.length - 1)
@@ -64,6 +64,29 @@ function Swiper() {
 
     console.log(currentImageIndex, images && images[currentImageIndex])
 
+
+    const addClass = (current: number, index: number, initial: number) =>{
+        if(current === index){
+            
+
+            return 'slide-in'
+        }
+        if(initial === index){
+            return 'slide-out'
+        }
+        return 'notCurrent'
+    }
+
+    const addId = (current: number, index: number, initial: number) =>{
+        if(current === index){
+            return 'slide1'
+        }
+        if(initial === index){
+            return 'slide2'
+        }
+        return 'notCurrent'
+    }
+
     return (
         <div className="container">
             <div className='multipleSliderView'>
@@ -81,27 +104,27 @@ function Swiper() {
             </div> */}
 
             <div style={{ position: 'relative' }}>
-                <div style={{ position: 'absolute' }}>
-                {images && images[initialImageIndex] ? <Image image={images[initialImageIndex]} classN={c1} id={i1}/> : ""}
+                <div style={{ position: 'absolute'  }}>
+                {images && images[0] ? <Image image={images[0]} classN={addClass(currentImageIndex, 0, initialImageIndex)} id={addId(currentImageIndex, 0, initialImageIndex)} /> : ""}
                 </div>
-                <div style={{ position: 'absolute' }}>
-                {images && images[currentImageIndex] ? <Image image={images[currentImageIndex]} classN={c2}  id={i2}/> : ""}
+                <div style={{ position: 'absolute'  }}>
+                {images && images[1] ? <Image image={images[1]} classN={addClass(currentImageIndex, 1, initialImageIndex)} id={addId(currentImageIndex, 1, initialImageIndex)}/> : ""}
                 </div>
-                <div style={{ position: 'absolute' }}>
-                {images && images[currentImageIndex] ? <Image image={images[currentImageIndex]} classN={c2}  id={i2}/> : ""}
+                <div style={{ position: 'absolute'  }}>
+                {images && images[2] ? <Image image={images[2]} classN={addClass(currentImageIndex, 2, initialImageIndex)} id={addId(currentImageIndex, 2, initialImageIndex)}/> : ""}
                 </div>
-                <div style={{ position: 'absolute' }}>
-                {images && images[currentImageIndex] ? <Image image={images[currentImageIndex]} classN={c2}  id={i2}/> : ""}
+                <div style={{ position: 'absolute'  }}>
+                {images && images[3] ? <Image image={images[3]} classN={addClass(currentImageIndex, 3, initialImageIndex)} id={addId(currentImageIndex, 3, initialImageIndex)}/> : ""}
                 </div>
-                <div style={{ position: 'absolute' }}>
-                {images && images[currentImageIndex] ? <Image image={images[currentImageIndex]} classN={c2}  id={i2}/> : ""}
+                <div style={{ position: 'absolute'  }}>
+                {images && images[4] ? <Image image={images[4]} classN={addClass(currentImageIndex, 4, initialImageIndex)} id={addId(currentImageIndex, 4, initialImageIndex)}/> : ""}
                 </div>
-                <div style={{ position: 'absolute' }}>
-                {images && images[currentImageIndex] ? <Image image={images[currentImageIndex]} classN={c2}  id={i2}/> : ""}
+                <div style={{ position: 'absolute'  }}>
+                {images && images[5] ? <Image image={images[5]} classN={addClass(currentImageIndex, 5, initialImageIndex)} id={addId(currentImageIndex, 5, initialImageIndex)}/> : ""}
                 </div>
-                <div style={{ position: 'absolute' }}>
-                {images && images[currentImageIndex] ? <Image image={images[currentImageIndex]} classN={c2}  id={i2}/> : ""}
-                </div>
+                {/* <div style={{  }}>
+                {images && images[6] ? <Image image={images[6]} classN={addClass(currentImageIndex, 4, initialImageIndex)} id={addId(currentImageIndex, 4, initialImageIndex)}/> : ""}
+                </div> */}
             </div>
 <br />
 <br />
