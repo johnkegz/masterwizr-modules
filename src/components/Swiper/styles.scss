@@ -17,6 +17,12 @@
     justify-content: center;
 }
 
+.swiperContentBody{ 
+    position: relative; 
+    display: flex;
+    justify-content: center;
+}
+
 .swiperContentImage {
     position: absolute;
 }

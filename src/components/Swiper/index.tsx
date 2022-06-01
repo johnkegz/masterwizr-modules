@@ -152,7 +152,7 @@ function Swiper() {
                     <LeftArrow setLeft={setLeft} currentImageIndex={currentImageIndex} />
                 </div>
                 <div className='swiperContent'>
-                    <div style={{ position: 'relative', background: 'pink', display: 'flex', justifyContent: 'center' }} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+                    <div className='swiperContentBody' onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
                         <div className='swiperContentImage'>
                             {images && images[0] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[0].url} alt={images[0].title} imageClass={addClass(currentImageIndex, 0, initialImageIndex)} id={addId(currentImageIndex, 0, initialImageIndex)} /> : ""}
                         </div>
