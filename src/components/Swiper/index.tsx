@@ -130,6 +130,7 @@ function Swiper() {
 
     return (
         <div className="container">
+            <div className='title'>MASTER WiZR Modules</div>
             <div  className='multipleSliderViewContainer'>
                 <div className='multipleSliderView'>
                     {
@@ -142,7 +143,7 @@ function Swiper() {
                                 wrapperClass={'wrapper'}
                                 classN={'imageContainer'}
                             />
-                            <div>{image.title.split(" ")[0]}</div>
+                            <div className='thumbnailTitles'>{image.title.split(" ")[0]}</div>
                         </div>)}
                 </div>
             </div>
