@@ -114,8 +114,8 @@
 
 #slide3 {
     position: absolute;
-    transform: translateX(50%);
-    -webkit-transform: translateX(50%);
+    animation-name: slide-out3;
+    animation-duration: 1s;
 }
 
 #slide4 {
@@ -147,25 +147,10 @@
 }
 
 @keyframes slide-out3 {
-
-    100% {
-        transform: translateX(0%);
-    }
-
-    0% {
-        transform: translateX(100%);
-    }
+    from { transform: translateX(0)}
+    to {transform: translateX(100%)}
 }
 
-@-webkit-keyframes slide-out3 {
-    100% {
-        -webkit-transform: translateX(100%);
-    }
-
-    100% {
-        -webkit-transform: translateX(0%);
-    }
-}
 
 .notCurrent {
     display: none;
