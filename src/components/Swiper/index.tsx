@@ -2,6 +2,8 @@ import React from 'react'
 import Image from '../Image'
 import './styles.scss'
 import { getImages } from '../../api'
+import LeftArrow from '../LeftArrow';
+import RightArrow from '../RightArrow';
 
 interface image {
     albumId: number;
@@ -54,9 +56,9 @@ function Swiper() {
 
     const [direction, setDirection] = React.useState<string | null>('left')
 
-    const browseImages = async() => {
+    const browseImages = async () => {
         let imagesData = await getImages()
-        let data = Array.isArray(imagesData)?imagesData:[]
+        let data = Array.isArray(imagesData) ? imagesData : []
         setImages(data.slice(0, 6))
     }
 
@@ -149,32 +151,45 @@ function Swiper() {
                             handleGetImageClicked={handleGetImageClicked}
                             index={index}
                             url={image.thumbnailUrl} alt={images[0].title}
+                            wrapperClass={''}
                         />
                         <div>{image.title.split(" ")[0]}</div>
                     </div>)}
             </div>
-            <button onClick={() => setLeft(currentImageIndex)} >left</button>
-            <button onClick={() => setRight(currentImageIndex)}>Right</button>
-            <div style={{ position: 'relative' }} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
-                <div style={{ position: 'absolute' }}>
-                    {images && images[0] ? <Image url={images[0].url} alt={images[0].title} classN={addClass(currentImageIndex, 0, initialImageIndex)} id={addId(currentImageIndex, 0, initialImageIndex)} /> : ""}
+            <div className='swiperContentContainer'>
+                <div>
+                <LeftArrow setLeft={setLeft} currentImageIndex={currentImageIndex}/>
+                    {/* <button onClick={() => setLeft(currentImageIndex)} >left</button> */}
+                    
                 </div>
-                <div style={{ position: 'absolute' }}>
-                    {images && images[1] ? <Image url={images[1].url} alt={images[1].title} classN={addClass(currentImageIndex, 1, initialImageIndex)} id={addId(currentImageIndex, 1, initialImageIndex)} /> : ""}
+                <div className='swiperContent'>
+                    <div style={{ position: 'relative', background: 'pink', display: 'flex', justifyContent: 'center' }} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+                        <div className='swiperContentImage'>
+                            {images && images[0] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[0].url} alt={images[0].title} classN={addClass(currentImageIndex, 0, initialImageIndex)} id={addId(currentImageIndex, 0, initialImageIndex)} /> : ""}
+                        </div>
+                        <div className='swiperContentImage'>
+                            {images && images[1] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[1].url} alt={images[1].title} classN={addClass(currentImageIndex, 1, initialImageIndex)} id={addId(currentImageIndex, 1, initialImageIndex)} /> : ""}
+                        </div>
+                        <div className='swiperContentImage'>
+                            {images && images[2] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[2].url} alt={images[2].title} classN={addClass(currentImageIndex, 2, initialImageIndex)} id={addId(currentImageIndex, 2, initialImageIndex)} /> : ""}
+                        </div>
+                        <div className='swiperContentImage'>
+                            {images && images[3] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[3].url} alt={images[3].title} classN={addClass(currentImageIndex, 3, initialImageIndex)} id={addId(currentImageIndex, 3, initialImageIndex)} /> : ""}
+                        </div>
+                        <div className='swiperContentImage'>
+                            {images && images[4] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[4].url} alt={images[4].title} classN={addClass(currentImageIndex, 4, initialImageIndex)} id={addId(currentImageIndex, 4, initialImageIndex)} /> : ""}
+                        </div>
+                        <div className='swiperContentImage'>
+                            {images && images[5] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[5].url} alt={images[5].title} classN={addClass(currentImageIndex, 5, initialImageIndex)} id={addId(currentImageIndex, 5, initialImageIndex)} /> : ""}
+                        </div>
+                    </div>
                 </div>
-                <div style={{ position: 'absolute' }}>
-                    {images && images[2] ? <Image url={images[2].url} alt={images[2].title} classN={addClass(currentImageIndex, 2, initialImageIndex)} id={addId(currentImageIndex, 2, initialImageIndex)} /> : ""}
-                </div>
-                <div style={{ position: 'absolute' }}>
-                    {images && images[3] ? <Image url={images[3].url} alt={images[3].title} classN={addClass(currentImageIndex, 3, initialImageIndex)} id={addId(currentImageIndex, 3, initialImageIndex)} /> : ""}
-                </div>
-                <div style={{ position: 'absolute' }}>
-                    {images && images[4] ? <Image url={images[4].url} alt={images[4].title} classN={addClass(currentImageIndex, 4, initialImageIndex)} id={addId(currentImageIndex, 4, initialImageIndex)} /> : ""}
-                </div>
-                <div style={{ position: 'absolute' }}>
-                    {images && images[5] ? <Image url={images[5].url} alt={images[5].title} classN={addClass(currentImageIndex, 5, initialImageIndex)} id={addId(currentImageIndex, 5, initialImageIndex)} /> : ""}
+                <div>
+                    {/* <button onClick={() => setRight(currentImageIndex)}>Right</button> */}
+                    <RightArrow setRight={setRight} currentImageIndex={currentImageIndex} />
                 </div>
             </div>
+
         </div>
     )
 }
