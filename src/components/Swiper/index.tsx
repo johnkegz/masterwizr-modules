@@ -141,7 +141,7 @@ function Swiper() {
                                 index={index}
                                 url={image.thumbnailUrl} alt={images[0].title}
                                 wrapperClass={'wrapper'}
-                                classN={'imageContainer'}
+                                imageClass={'imageContainer'}
                             />
                             <div className='thumbnailTitles'>{image.title.split(" ")[0]}</div>
                         </div>)}
@@ -154,22 +154,22 @@ function Swiper() {
                 <div className='swiperContent'>
                     <div style={{ position: 'relative', background: 'pink', display: 'flex', justifyContent: 'center' }} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
                         <div className='swiperContentImage'>
-                            {images && images[0] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[0].url} alt={images[0].title} classN={addClass(currentImageIndex, 0, initialImageIndex)} id={addId(currentImageIndex, 0, initialImageIndex)} /> : ""}
+                            {images && images[0] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[0].url} alt={images[0].title} imageClass={addClass(currentImageIndex, 0, initialImageIndex)} id={addId(currentImageIndex, 0, initialImageIndex)} /> : ""}
                         </div>
                         <div className='swiperContentImage'>
-                            {images && images[1] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[1].url} alt={images[1].title} classN={addClass(currentImageIndex, 1, initialImageIndex)} id={addId(currentImageIndex, 1, initialImageIndex)} /> : ""}
+                            {images && images[1] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[1].url} alt={images[1].title} imageClass={addClass(currentImageIndex, 1, initialImageIndex)} id={addId(currentImageIndex, 1, initialImageIndex)} /> : ""}
                         </div>
                         <div className='swiperContentImage'>
-                            {images && images[2] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[2].url} alt={images[2].title} classN={addClass(currentImageIndex, 2, initialImageIndex)} id={addId(currentImageIndex, 2, initialImageIndex)} /> : ""}
+                            {images && images[2] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[2].url} alt={images[2].title} imageClass={addClass(currentImageIndex, 2, initialImageIndex)} id={addId(currentImageIndex, 2, initialImageIndex)} /> : ""}
                         </div>
                         <div className='swiperContentImage'>
-                            {images && images[3] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[3].url} alt={images[3].title} classN={addClass(currentImageIndex, 3, initialImageIndex)} id={addId(currentImageIndex, 3, initialImageIndex)} /> : ""}
+                            {images && images[3] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[3].url} alt={images[3].title} imageClass={addClass(currentImageIndex, 3, initialImageIndex)} id={addId(currentImageIndex, 3, initialImageIndex)} /> : ""}
                         </div>
                         <div className='swiperContentImage'>
-                            {images && images[4] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[4].url} alt={images[4].title} classN={addClass(currentImageIndex, 4, initialImageIndex)} id={addId(currentImageIndex, 4, initialImageIndex)} /> : ""}
+                            {images && images[4] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[4].url} alt={images[4].title} imageClass={addClass(currentImageIndex, 4, initialImageIndex)} id={addId(currentImageIndex, 4, initialImageIndex)} /> : ""}
                         </div>
                         <div className='swiperContentImage'>
-                            {images && images[5] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[5].url} alt={images[5].title} classN={addClass(currentImageIndex, 5, initialImageIndex)} id={addId(currentImageIndex, 5, initialImageIndex)} /> : ""}
+                            {images && images[5] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[5].url} alt={images[5].title} imageClass={addClass(currentImageIndex, 5, initialImageIndex)} id={addId(currentImageIndex, 5, initialImageIndex)} /> : ""}
                         </div>
                     </div>
                 </div>
