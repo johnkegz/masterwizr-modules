@@ -54,10 +54,15 @@ function Swiper() {
 
     const [direction, setDirection] = React.useState<string | null>('left')
 
+    const browseImages = async() => {
+        let imagesData = await getImages()
+        let data = Array.isArray(imagesData)?imagesData:[]
+        setImages(data.slice(0, 6))
+    }
 
 
     React.useEffect(() => {
-        setImages(getImages().slice(0, 6))
+        browseImages()
     }, [])
 
     const setLeft = (index: number) => {
