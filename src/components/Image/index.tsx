@@ -6,8 +6,9 @@ function Image(props: any) {
         <img
         className={props.classN}
             id={props.id}
-            src={props.image.url}
+            src={props.url}
             onClick={() => props.handleGetImageClicked && props.handleGetImageClicked(props.image, props.index)}
+            alt={props.title}
         />
     </div>
 }
