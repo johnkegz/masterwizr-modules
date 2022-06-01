@@ -15,14 +15,47 @@ function Swiper() {
     const [images, setImages] = React.useState<Array<image>>([])
     const [currentImageIndex, setCurrentImageIndex] = React.useState<number>(2)
     const [initialImageIndex, setInitialImageIndex] = React.useState<number>(1)
-    const [currentClass, setCurrentClass] = React.useState<string>('')
-    const [c1, setC1] = React.useState<string>('slide-in')
-    const [c2, setC2] = React.useState<string>('slide-out')
-    const [i2, setI2] = React.useState<string>('slide2')
-    const [i1, setI1] = React.useState<string>('slide1')
+    
 
 
-    const [direction, setDirection] = React.useState<string | null>(null)
+    const [touchStart, setTouchStart] = React.useState(null)
+const [touchEnd, setTouchEnd] = React.useState(null)
+
+// the required distance between touchStart and touchEnd to be detected as a swipe
+const minSwipeDistance = 50 
+
+const onTouchStart = (e: any) => {
+  setTouchEnd(null) // otherwise the swipe is fired even with usual touch events
+  setTouchStart(e.targetTouches[0].clientX)
+}
+
+const onTouchMove = (e: any) => setTouchEnd(e.targetTouches[0].clientX)
+
+const onTouchEnd = () => {
+  if (!touchStart || !touchEnd) return
+  const distance = touchStart - touchEnd
+  const isLeftSwipe = distance > minSwipeDistance
+  const isRightSwipe = distance < -minSwipeDistance
+  if (isLeftSwipe || isRightSwipe) {
+      if(isLeftSwipe){
+        setRight(currentImageIndex)
+      }
+      else{
+        
+
+
+        setLeft(currentImageIndex)
+      }
+    
+    console.log('swipe', isLeftSwipe ? 'left' : 'right')}
+  // add your conditional logic here
+}
+
+
+console.log("+++>", currentImageIndex, initialImageIndex)
+
+
+    const [direction, setDirection] = React.useState<string | null>('left')
 
 
 
@@ -32,12 +65,7 @@ function Swiper() {
     }, [])
 
     const setLeft = (index: number) => {
-        // setC1('slide-out')
-        // setC2('slide-in')
-        // setI1('slide2')
-        // setI2('slide1')
-
-        setDirection('left')
+        setDirection('right')
         const newIndex = index - 1
         if (newIndex < 0) {
             setCurrentImageIndex(images.length - 1)
@@ -51,7 +79,8 @@ function Swiper() {
 
     const setRight = (index: number) => {
         const newIndex = index + 1
-        setDirection('right')
+        // setDirection('right')
+        setDirection('left')
         if (newIndex > images.length - 1) {
             setCurrentImageIndex(0)
             setInitialImageIndex(index)
@@ -113,8 +142,7 @@ function Swiper() {
         <div className="container">
             <div className='multipleSliderView'>
                 {
-                    images.map((image: image, index) => <div className='imageContainer'><Image
-                        key={image.id}
+                    images.map((image: image, index) => <div className='imageContainer' key={image.id}><Image
                         image={image}
                         handleGetImageClicked={handleGetImageClicked}
                         index={index}
@@ -122,7 +150,7 @@ function Swiper() {
             </div>
             <button onClick={() => setLeft(currentImageIndex)} >left</button>
             <button onClick={() => setRight(currentImageIndex)}>Right</button>
-                       <div style={{ position: 'relative' }}>
+                       <div style={{ position: 'relative' }} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
                 <div style={{ position: 'absolute' }}>
                 {images && images[0] ? <Image image={images[0]} classN={addClass(currentImageIndex, 0, initialImageIndex)} id={addId(currentImageIndex, 0, initialImageIndex)} /> : ""}
                 </div>

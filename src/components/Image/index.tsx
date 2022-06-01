@@ -1,6 +1,7 @@
 import React from 'react'
 
 function Image(props: any) {
+    console.log("props >>>>>>>>>>>", props)
     return <div className="wrapper">
         <img
         className={props.classN}
