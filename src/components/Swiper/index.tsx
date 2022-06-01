@@ -4,6 +4,7 @@ import './styles.scss'
 import { getImages } from '../../api'
 import LeftArrow from '../LeftArrow';
 import RightArrow from '../RightArrow';
+import SwiperContent from '../swiperContent';
 
 interface image {
     albumId: number;
@@ -158,28 +159,15 @@ function Swiper() {
                 <div>
                     <LeftArrow setLeft={setLeft} currentImageIndex={currentImageIndex} />
                 </div>
-                <div className='swiperContent'>
-                    <div className='swiperContentBody' onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
-                        <div className='swiperContentImage'>
-                            {images && images[0] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[0].url} alt={images[0].title} imageClass={addClass(currentImageIndex, 0, initialImageIndex)} id={addId(currentImageIndex, 0, initialImageIndex)} /> : ""}
-                        </div>
-                        <div className='swiperContentImage'>
-                            {images && images[1] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[1].url} alt={images[1].title} imageClass={addClass(currentImageIndex, 1, initialImageIndex)} id={addId(currentImageIndex, 1, initialImageIndex)} /> : ""}
-                        </div>
-                        <div className='swiperContentImage'>
-                            {images && images[2] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[2].url} alt={images[2].title} imageClass={addClass(currentImageIndex, 2, initialImageIndex)} id={addId(currentImageIndex, 2, initialImageIndex)} /> : ""}
-                        </div>
-                        <div className='swiperContentImage'>
-                            {images && images[3] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[3].url} alt={images[3].title} imageClass={addClass(currentImageIndex, 3, initialImageIndex)} id={addId(currentImageIndex, 3, initialImageIndex)} /> : ""}
-                        </div>
-                        <div className='swiperContentImage'>
-                            {images && images[4] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[4].url} alt={images[4].title} imageClass={addClass(currentImageIndex, 4, initialImageIndex)} id={addId(currentImageIndex, 4, initialImageIndex)} /> : ""}
-                        </div>
-                        <div className='swiperContentImage'>
-                            {images && images[5] ? <Image wrapperClass={'swiperContentImageWrapper'} url={images[5].url} alt={images[5].title} imageClass={addClass(currentImageIndex, 5, initialImageIndex)} id={addId(currentImageIndex, 5, initialImageIndex)} /> : ""}
-                        </div>
-                    </div>
-                </div>
+                <SwiperContent  images={images}
+                    onTouchStart={onTouchStart}
+                    onTouchMove={onTouchMove}
+                    onTouchEnd={onTouchEnd}
+                    addClass={addClass}
+                    currentImageIndex={currentImageIndex}
+                    initialImageIndex={initialImageIndex}
+                    addId={addId}
+                />
                 <div>
                     <RightArrow setRight={setRight} currentImageIndex={currentImageIndex} />
                 </div>
