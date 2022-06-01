@@ -135,16 +135,23 @@ function Swiper() {
                 <div className='multipleSliderView'>
                     {
                         images.map((image: image, index) => <div key={image.id}>
+                            <div className='singleImage' 
+                             onClick={() => handleGetImageClicked(image, index)}
+                            >
                             <Image
                                 image={image}
-                                handleGetImageClicked={handleGetImageClicked}
                                 index={index}
                                 url={image.thumbnailUrl} alt={images[0].title}
                                 wrapperClass={'wrapper'}
                                 imageClass={'imageContainer'}
                             />
+                            <div className='singleImageWrapper'>
+                            
+                            </div>
+                            </div>
                             <div className='thumbnailTitles'>{image.title.split(" ")[0]}</div>
-                        </div>)}
+                        </div>)
+                    }
                 </div>
             </div>
             <div className='swiperContentContainer'>
@@ -177,7 +184,6 @@ function Swiper() {
                     <RightArrow setRight={setRight} currentImageIndex={currentImageIndex} />
                 </div>
             </div>
-
         </div>
     )
 }

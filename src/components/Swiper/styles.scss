@@ -17,8 +17,8 @@
     justify-content: center;
 }
 
-.swiperContentBody{ 
-    position: relative; 
+.swiperContentBody {
+    position: relative;
     display: flex;
     justify-content: center;
 }
@@ -49,11 +49,38 @@
     height: 200px;
 }
 
-.imageContainer { 
+.imageContainer {
     border-radius: 10px;
     width: 100px;
     height: 100px;
     cursor: pointer;
+}
+
+.singleImage {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
+}
+
+.singleImageWrapper {
+    position: absolute;
+    top: 100px;
+    width: 100px;
+    height: 100px;
+    transition: 1s;
+    border-radius: 10px;
+}
+
+.singleImage:hover .singleImageWrapper {
+    background-color: #FFA500;
+    opacity: .5;
+    transition: 1s;
+    width: 100px;
+    height: 100px;
+    top: 0;
+    border-radius: 10px;
 }
 
 .wrapper {
@@ -156,8 +183,13 @@
 }
 
 @keyframes slide-out3 {
-    from { transform: translateX(0)}
-    to {transform: translateX(100%)}
+    from {
+        transform: translateX(0)
+    }
+
+    to {
+        transform: translateX(100%)
+    }
 }
 
 
@@ -178,7 +210,7 @@
 }
 
 .arrow {
-    border: solid rgba(0,0,0,.3);
+    border: solid rgba(0, 0, 0, .3);
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 3px;
@@ -186,11 +218,11 @@
     width: 3px;
 }
 
-.arrowContainer:hover{
+.arrowContainer:hover {
     background: #FFA500
 }
 
-.arrowContainer:hover .arrow{
+.arrowContainer:hover .arrow {
     border: solid white;
     border-width: 0 3px 3px 0;
     display: inline-block;
@@ -238,14 +270,14 @@
 }
 
 @media only screen and (max-width: 780px) {
-    
+
     .multipleSliderView {
         width: 80%;
     }
 }
 
 @media only screen and (max-width: 540px) {
-    
+
     .swiperContentImageWrapper {
         width: 30rem;
         height: 30rem;
@@ -268,18 +300,42 @@
     .imageContainer {
         width: 80px;
         height: 80px;
-        
+
     }
-    
+
     .wrapper {
         width: 80px;
         height: 80px;
         margin-right: 10px;
     }
 
-    .thumbnailTitles{
+    .thumbnailTitles {
         width: 80px;
         padding-right: 10px;
+    }
+
+    .singleImageWrapper {
+        position: absolute;
+        top: 80px;
+        width: 80px;
+        height: 80px;
+        transition: 1s;
+        border-radius: 10px;
+    }
+    
+    .singleImage:hover .singleImageWrapper {
+        background-color: #FFA500;
+        opacity: .5;
+        transition: 1s;
+        width: 80px;
+        height: 80px;
+        top: 0;
+        border-radius: 10px;
+    }
+
+    .singleImage {
+        width: 80px;
+        height: 80px;
     }
 
 }

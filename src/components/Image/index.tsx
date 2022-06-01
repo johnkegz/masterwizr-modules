@@ -6,7 +6,6 @@ function Image(props: any) {
             className={props.imageClass}
             id={props.id}
             src={props.url}
-            onClick={() => props.handleGetImageClicked && props.handleGetImageClicked(props.image, props.index)}
             alt={props.title}
         />
     </div>
