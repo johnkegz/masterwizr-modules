@@ -15,12 +15,16 @@
 - the app was developed on node version 16 environment
 - Yarn 
 - create react-app using yarn
+- Deployed on netlify https://62975402eb46c90bdc8e252f--the-great-johnkegz-site.netlify.app
+
 
 ### `How to test the application`
 - Clone the repo
 - cd into the application
 - Run `yarn` to install dependencies
 - A single page application with the requirement is displayed
+
+
 
 Author 
 JOHN KALYANGO
