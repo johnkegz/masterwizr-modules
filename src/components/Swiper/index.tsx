@@ -16,18 +16,28 @@ function Swiper() {
     const [currentImageIndex, setCurrentImageIndex] = React.useState<number>(2)
     const [initialImageIndex, setInitialImageIndex] = React.useState<number>(1)
     const [currentClass, setCurrentClass] = React.useState<string>('')
+    const [c1, setC1] = React.useState<string>('slide-in')
+    const [c2, setC2] = React.useState<string>('slide-out')
+    const [i2, setI2] = React.useState<string>('slide2')
+    const [i1, setI1] = React.useState<string>('slide1')
     React.useEffect(() => {
         setImages(getImages().slice(0, 6))
         // setCurrentImage(getImages()[0])
     }, [])
 
     const setLeft = (index: number) => {
+        setC1('slide-out')
+        setC2('slide-in')
+        setI1('slide2')
+        setI2('slide1')
         const newIndex = index - 1
         if (newIndex < 0) {
             setCurrentImageIndex(images.length - 1)
+            setInitialImageIndex(index)
         }
         else {
             setCurrentImageIndex(newIndex)
+            setInitialImageIndex(index)
         }
     }
 
@@ -72,10 +82,25 @@ function Swiper() {
 
             <div style={{ position: 'relative' }}>
                 <div style={{ position: 'absolute' }}>
-                {images && images[initialImageIndex] ? <Image image={images[initialImageIndex]} classN={'slide-in'} id="slide1"/> : ""}
+                {images && images[initialImageIndex] ? <Image image={images[initialImageIndex]} classN={c1} id={i1}/> : ""}
                 </div>
                 <div style={{ position: 'absolute' }}>
-                {images && images[currentImageIndex] ? <Image image={images[currentImageIndex]} classN={'slide-out'}  id="slide2"/> : ""}
+                {images && images[currentImageIndex] ? <Image image={images[currentImageIndex]} classN={c2}  id={i2}/> : ""}
+                </div>
+                <div style={{ position: 'absolute' }}>
+                {images && images[currentImageIndex] ? <Image image={images[currentImageIndex]} classN={c2}  id={i2}/> : ""}
+                </div>
+                <div style={{ position: 'absolute' }}>
+                {images && images[currentImageIndex] ? <Image image={images[currentImageIndex]} classN={c2}  id={i2}/> : ""}
+                </div>
+                <div style={{ position: 'absolute' }}>
+                {images && images[currentImageIndex] ? <Image image={images[currentImageIndex]} classN={c2}  id={i2}/> : ""}
+                </div>
+                <div style={{ position: 'absolute' }}>
+                {images && images[currentImageIndex] ? <Image image={images[currentImageIndex]} classN={c2}  id={i2}/> : ""}
+                </div>
+                <div style={{ position: 'absolute' }}>
+                {images && images[currentImageIndex] ? <Image image={images[currentImageIndex]} classN={c2}  id={i2}/> : ""}
                 </div>
             </div>
 <br />
