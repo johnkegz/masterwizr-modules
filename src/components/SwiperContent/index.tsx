@@ -12,10 +12,10 @@ interface SwiperContentProps {
   onTouchStart: any;
   onTouchMove: any;
   onTouchEnd: any;
-  addClass: any;
+  addClass: (current: number, index: number, initial: number) => string;
   currentImageIndex: number;
   initialImageIndex: number;
-  addId: any;
+  addId:  (current: number, index: number, initial: number) => string;
 }
 
 function SwiperContent(props: SwiperContentProps) {

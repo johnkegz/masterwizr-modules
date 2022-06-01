@@ -1,12 +1,20 @@
 import React from 'react'
 
-function Image(props: any) {
+interface ImageProps {
+    wrapperClass: string;
+    imageClass: string;
+    id?: string;
+    url: string;
+    alt: string;
+}
+
+function Image(props: ImageProps) {
     return <div className={props.wrapperClass}>
         <img
             className={props.imageClass}
             id={props.id}
             src={props.url}
-            alt={props.title}
+            alt={props.alt}
         />
     </div>
 }

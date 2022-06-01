@@ -4,7 +4,8 @@ import './styles.scss'
 import { getImages } from '../../api'
 import LeftArrow from '../LeftArrow';
 import RightArrow from '../RightArrow';
-import SwiperContent from '../swiperContent';
+import SwiperContent from '../SwiperContent';
+import MultipleSliderView from '../MultipleSliderView';
 
 interface image {
     albumId: number;
@@ -82,7 +83,7 @@ function Swiper() {
         }
     }
 
-    const handleGetImageClicked = (image: image, index: number) => {
+    const handleGetImageClicked = (index: number) => {
         setDirection('left')
         const newIndex = index - 1
         if (newIndex < 0) {
@@ -102,14 +103,12 @@ function Swiper() {
         if (initial === index && direction === "left") {
             return 'slide-out'
         }
-
         if (current === index && direction === "right") {
             return 'slide-in3'
         }
         if (initial === index && direction === "right") {
             return 'slide-out3'
         }
-
         return 'notCurrent'
     }
 
@@ -132,34 +131,13 @@ function Swiper() {
     return (
         <div className="container">
             <div className='title'>MASTER WiZR Modules</div>
-            <div  className='multipleSliderViewContainer'>
-                <div className='multipleSliderView'>
-                    {
-                        images.map((image: image, index) => <div key={image.id}>
-                            <div className='singleImage' 
-                             onClick={() => handleGetImageClicked(image, index)}
-                            >
-                            <Image
-                                image={image}
-                                index={index}
-                                url={image.thumbnailUrl} alt={images[0].title}
-                                wrapperClass={'wrapper'}
-                                imageClass={'imageContainer'}
-                            />
-                            <div className='singleImageWrapper'>
-                            
-                            </div>
-                            </div>
-                            <div className='thumbnailTitles'>{image.title.split(" ")[0]}</div>
-                        </div>)
-                    }
-                </div>
-            </div>
+            <MultipleSliderView images={images}
+                handleGetImageClicked={handleGetImageClicked} />
             <div className='swiperContentContainer'>
                 <div>
                     <LeftArrow setLeft={setLeft} currentImageIndex={currentImageIndex} />
                 </div>
-                <SwiperContent  images={images}
+                <SwiperContent images={images}
                     onTouchStart={onTouchStart}
                     onTouchMove={onTouchMove}
                     onTouchEnd={onTouchEnd}
