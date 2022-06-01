@@ -17,17 +17,12 @@ function Swiper() {
     const [images, setImages] = React.useState<Array<image>>([])
     const [currentImageIndex, setCurrentImageIndex] = React.useState<number>(2)
     const [initialImageIndex, setInitialImageIndex] = React.useState<number>(1)
-
-
-
     const [touchStart, setTouchStart] = React.useState(null)
     const [touchEnd, setTouchEnd] = React.useState(null)
-
-    // the required distance between touchStart and touchEnd to be detected as a swipe
     const minSwipeDistance = 50
 
     const onTouchStart = (e: any) => {
-        setTouchEnd(null) // otherwise the swipe is fired even with usual touch events
+        setTouchEnd(null)
         setTouchStart(e.targetTouches[0].clientX)
     }
 
@@ -43,15 +38,9 @@ function Swiper() {
                 setRight(currentImageIndex)
             }
             else {
-
-
-
                 setLeft(currentImageIndex)
             }
-
-            console.log('swipe', isLeftSwipe ? 'left' : 'right')
         }
-        // add your conditional logic here
     }
 
     const [direction, setDirection] = React.useState<string | null>('left')
@@ -61,7 +50,6 @@ function Swiper() {
         let data = Array.isArray(imagesData) ? imagesData : []
         setImages(data.slice(0, 6))
     }
-
 
     React.useEffect(() => {
         browseImages()
@@ -82,7 +70,6 @@ function Swiper() {
 
     const setRight = (index: number) => {
         const newIndex = index + 1
-        // setDirection('right')
         setDirection('left')
         if (newIndex > images.length - 1) {
             setCurrentImageIndex(0)
@@ -143,24 +130,25 @@ function Swiper() {
 
     return (
         <div className="container">
-            <div className='multipleSliderView'>
-                {
-                    images.map((image: image, index) => <div className='' key={image.id}>
-                        <Image
-                            image={image}
-                            handleGetImageClicked={handleGetImageClicked}
-                            index={index}
-                            url={image.thumbnailUrl} alt={images[0].title}
-                            wrapperClass={''}
-                        />
-                        <div>{image.title.split(" ")[0]}</div>
-                    </div>)}
+            <div  className='multipleSliderViewContainer'>
+                <div className='multipleSliderView'>
+                    {
+                        images.map((image: image, index) => <div key={image.id}>
+                            <Image
+                                image={image}
+                                handleGetImageClicked={handleGetImageClicked}
+                                index={index}
+                                url={image.thumbnailUrl} alt={images[0].title}
+                                wrapperClass={'wrapper'}
+                                classN={'imageContainer'}
+                            />
+                            <div>{image.title.split(" ")[0]}</div>
+                        </div>)}
+                </div>
             </div>
             <div className='swiperContentContainer'>
                 <div>
-                <LeftArrow setLeft={setLeft} currentImageIndex={currentImageIndex}/>
-                    {/* <button onClick={() => setLeft(currentImageIndex)} >left</button> */}
-                    
+                    <LeftArrow setLeft={setLeft} currentImageIndex={currentImageIndex} />
                 </div>
                 <div className='swiperContent'>
                     <div style={{ position: 'relative', background: 'pink', display: 'flex', justifyContent: 'center' }} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
@@ -185,7 +173,6 @@ function Swiper() {
                     </div>
                 </div>
                 <div>
-                    {/* <button onClick={() => setRight(currentImageIndex)}>Right</button> */}
                     <RightArrow setRight={setRight} currentImageIndex={currentImageIndex} />
                 </div>
             </div>
